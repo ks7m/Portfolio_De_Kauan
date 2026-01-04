@@ -1,0 +1,502 @@
+/* ===== VARIÁVEIS E RESET ===== */
+:root {
+    --primary: #4361ee;
+    --secondary: #3a0ca3;
+    --accent: #4cc9f0;
+    --dark: #1a1a2e;
+    --light: #f8f9fa;
+    --text: #e2e2e2;
+    --card-bg: #16213e;
+    --gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--gradient);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ===== CÉU COM METEOROS ===== */
+.sky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.meteor {
+    position: absolute;
+    background: linear-gradient(to right, transparent, var(--accent));
+    border-radius: 50%;
+    filter: blur(2px);
+    animation: meteorAnimation linear infinite;
+}
+
+.meteor-1 {
+    width: 3px;
+    height: 60px;
+    top: 10%;
+    left: -100px;
+    animation-duration: 8s;
+    animation-delay: 0s;
+}
+
+.meteor-2 {
+    width: 2px;
+    height: 40px;
+    top: 30%;
+    left: -100px;
+    animation-duration: 6s;
+    animation-delay: 2s;
+}
+
+.meteor-3 {
+    width: 2px;
+    height: 50px;
+    top: 50%;
+    left: -100px;
+    animation-duration: 7s;
+    animation-delay: 4s;
+}
+
+.meteor-4 {
+    width: 3px;
+    height: 70px;
+    top: 70%;
+    left: -100px;
+    animation-duration: 9s;
+    animation-delay: 1s;
+}
+
+.meteor-5 {
+    width: 2px;
+    height: 45px;
+    top: 85%;
+    left: -100px;
+    animation-duration: 5s;
+    animation-delay: 3s;
+}
+
+@keyframes meteorAnimation {
+    0% {
+        transform: translateX(0) translateY(0) rotate(45deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(calc(100vw + 100px)) translateY(200px) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* ===== CONTAINER GERAL ===== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== HEADER ===== */
+nav {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+nav h1 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--accent), var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 30px rgba(76, 201, 240, 0.3);
+    letter-spacing: 2px;
+}
+
+nav::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    margin: 1rem auto;
+}
+
+/* ===== SEÇÃO SOBRE ===== */
+#sobre {
+    background: rgba(22, 33, 62, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(76, 201, 240, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+#sobre h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+    text-align: center;
+}
+
+.sobre-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .sobre-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+.sobre-texto p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: #ccc;
+}
+
+.sobre-texto strong {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.sobre-lista {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.sobre-lista li {
+    padding: 0.8rem 0;
+    position: relative;
+    padding-left: 2rem;
+    color: #ccc;
+}
+
+.sobre-lista li::before {
+    content: '▹';
+    color: var(--accent);
+    position: absolute;
+    left: 0;
+}
+
+.coder {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    border: 4px solid var(--accent);
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 50px rgba(76, 201, 240, 0.2);
+    justify-self: center;
+}
+
+/* ===== SEÇÃO CONTATO ===== */
+.contato-section {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+}
+
+.contato-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--accent);
+}
+
+.contato-icons {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.contato-icons a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    background: var(--card-bg);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.contato-icons a:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 20px rgba(76, 201, 240, 0.3);
+    background: rgba(22, 33, 62, 0.9);
+}
+
+.contato-icons img {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1);
+}
+
+/* ===== SEÇÃO SKILLS ===== */
+.skills-section {
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+}
+
+.skills-section h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--accent);
+}
+
+.skills-slider-dark {
+    display: flex;
+    gap: 2rem;
+    overflow: hidden;
+    position: relative;
+    padding: 1rem 0;
+}
+
+.skills-slider-dark::before,
+.skills-slider-dark::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.skills-slider-dark::before {
+    left: 0;
+    background: linear-gradient(to right, var(--dark), transparent);
+}
+
+.skills-slider-dark::after {
+    right: 0;
+    background: linear-gradient(to left, var(--dark), transparent);
+}
+
+.skills-slider-dark:hover .skill-card-dark {
+    animation-play-state: paused;
+}
+
+.skill-card-dark {
+    min-width: 150px;
+    height: 180px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(76, 201, 240, 0.1);
+    transition: all 0.3s ease;
+    animation: slide 20s linear infinite;
+}
+
+.skill-card-dark:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(76, 201, 240, 0.2);
+    background: rgba(22, 33, 62, 0.9);
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-150px * 6 - 2rem * 6));
+    }
+}
+
+.icon-dark {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.skill-card-dark span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+/* ===== SEÇÃO PROJETOS ===== */
+section:last-of-type {
+    padding: 3rem 0;
+}
+
+.card-container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(76, 201, 240, 0.1);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: block;
+}
+
+.card-container:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 40px rgba(76, 201, 240, 0.2);
+}
+
+.card-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(76, 201, 240, 0.1);
+}
+
+.card-content {
+    padding: 2rem;
+}
+
+.card-title {
+    font-size: 2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.card-description {
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.card-content img {
+    width: 40px;
+    height: 40px;
+    filter: brightness(0) invert(1);
+    transition: transform 0.3s ease;
+}
+
+.card-content img:hover {
+    transform: scale(1.1);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 768px) {
+    nav h1 {
+        font-size: 2.5rem;
+    }
+    
+    #sobre h2,
+    .contato-section h2,
+    .skills-section h2 {
+        font-size: 2rem;
+    }
+    
+    .sobre-container {
+        gap: 2rem;
+    }
+    
+    .contato-icons {
+        gap: 2rem;
+    }
+    
+    .skill-card-dark {
+        min-width: 130px;
+        height: 160px;
+    }
+    
+    .card-title {
+        font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    nav h1 {
+        font-size: 2rem;
+    }
+    
+    #sobre {
+        padding: 1.5rem;
+    }
+    
+    .sobre-lista li {
+        padding-left: 1.5rem;
+    }
+    
+    .contato-icons a {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .contato-icons img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* ===== ANIMAÇÕES GLOBAIS ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#sobre,
+.contato-section,
+.skills-section,
+.card-container {
+    animation: fadeIn 0.8s ease-out;
+}
+
+#sobre {
+    animation-delay: 0.1s;
+}
+
+.contato-section {
+    animation-delay: 0.2s;
+}
+
+.skills-section {
+    animation-delay: 0.3s;
+}
+
+.card-container {
+    animation-delay: 0.4s;
+} 
